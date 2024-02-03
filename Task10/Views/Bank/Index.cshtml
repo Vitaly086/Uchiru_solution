@@ -1,0 +1,22 @@
+﻿@model DepositModel;
+
+@{
+    ViewData["Title"] = "Bank Page";
+}
+
+<form asp-controller="Bank" asp-action="CalculateDeposit" method="post">
+    <div class="form-group">
+        <label for="InitialAmount">Сумма вклада:</label>
+        <input min="1" type="number" step="any" asp-for="InitialAmount" class="form-control" placeholder="Введите сумму больше 1"/>
+        <span asp-validation-for="InitialAmount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="NumberOfMonths">Количество месяцев:</label>
+        <input min="1" max="60" type="number" asp-for="NumberOfMonths" class="form-control" placeholder="Введите количество месяцев (от 1 до 60)"/>
+        <span asp-validation-for="NumberOfMonths" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Рассчитать</button>
+</form>
+
+
+<p class="final-deposit-amount">Конечная сумма вклада: @ViewData[FINAL_DEPOSIT_AMOUNT]</p>
